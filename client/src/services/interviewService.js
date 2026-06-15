@@ -16,12 +16,12 @@ const getResume = async () => {
 }
 
 const startInterview = async (role,resumeText,totalQuestions) => {
-    const response = await API.post('/interview/start',{role,resumeText,totalQuestions});
+    const response = await API.post('/api/interview/start',{role,resumeText,totalQuestions});
     return response.data.data;
 }
 
 const submitTextAnswer = async (interviewId, answer) => {
-  const response = await API.post(`/interview/${interviewId}/answer`, { answer });
+  const response = await API.post(`/api/interview/${interviewId}/answer`, { answer });
   return response.data.data;
 };
 
@@ -36,17 +36,17 @@ const transcribeAudio = async (audioBlob) => {
 };
 
 const submitCode = async (interviewId, code, language) => {
-  const response = await API.post(`/interview/${interviewId}/code`, { code, language });
+  const response = await API.post(`/api/interview/${interviewId}/code`, { code, language });
   return response.data.data;
 };
 
 const endInterview = async (interviewId) => {
-  const response = await API.post(`/interview/${interviewId}/end`);
+  const response = await API.post(`/api/interview/${interviewId}/end`);
   return response.data.data;
 };
 
 const getInterview = async (interviewId) => {
-  const response = await API.get(`/interview/${interviewId}`);
+  const response = await API.get(`/api/interview/${interviewId}`);
   return response.data.data;
 };
 
