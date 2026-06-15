@@ -1,23 +1,22 @@
-// ============================================
-// api.js - Axios Instance with Auth Interceptor
-// ============================================
-// Creates a reusable Axios instance that auto-attaches
-// the JWT token to every request.
-// Reference: axios.create(), interceptors - reference-javascript.md
-// ============================================
-
 import axios from 'axios';
 
+// fallback ensures deployment never breaks
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: API_BASE_URL,
+  withCredentials: true, // IMPORTANT for auth cookies (safe to keep)
 });
 
-// Attach JWT token to every request
+// Attach JWT token
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
 
