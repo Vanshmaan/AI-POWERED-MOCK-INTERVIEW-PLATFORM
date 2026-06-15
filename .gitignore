@@ -1,0 +1,47 @@
+# =========================
+# ENV FILE (MOST IMPORTANT)
+# =========================
+.env
+.env.local
+.env.development
+.env.production
+
+# =========================
+# NODE MODULES
+# =========================
+node_modules/
+
+# =========================
+# LOG FILES
+# =========================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# BUILD OUTPUT
+# =========================
+dist/
+build/
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE FILES
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OPTIONAL (uploads / temp files)
+# =========================
+uploads/
+temp/
+*.mp3
+*.wav
+*.webm
