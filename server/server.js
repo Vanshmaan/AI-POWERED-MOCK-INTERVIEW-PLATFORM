@@ -19,12 +19,21 @@ import connectDB from "./src/config/db.config.js";
 // Get the port from .env or use 5000 as default
 const PORT = process.env.PORT || 5000;
 
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "AI Interview Backend is running 🚀"
+  });
+});
+
 // ---- Start the Server ----
 
 const startServer = async () => {
   try {
     // Step 1: Connect to MongoDB (wait until connected)
     await connectDB();
+
 
     // Step 2: Start listening for HTTP requests
     app.listen(PORT, () => {
