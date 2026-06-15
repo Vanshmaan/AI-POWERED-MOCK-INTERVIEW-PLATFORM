@@ -42,6 +42,16 @@ app.use(express.json({ limit: '10mb' }));
 // /api/resume    → resume upload and parsing routes
 // /api/history   → interview history routes
 app.use('/api', routes);
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "AI Interview Backend is running 🚀"
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
 
 // ============================================
 // ERROR HANDLING (must be AFTER routes)
