@@ -4,14 +4,14 @@ const uploadResume = async(file) => {
     const formData = new FormData();
     formData.append('resume',file);
 
-    const response = await API.post('/resume/upload',formData,{
+    const response = await API.post('/api/resume/upload',formData,{
         headers : {'Content-Type' : 'multipart/form-data'},
     })
     return response.data.data;
 }
 
 const getResume = async () => {
-    const response = await API.get('/resume');
+    const response = await API.get('/api/resume');
     return response.data.data
 }
 
@@ -29,7 +29,7 @@ const transcribeAudio = async (audioBlob) => {
   const formData = new FormData();
   formData.append('audio', audioBlob, 'answer.webm');
 
-  const response = await API.post('/interview/transcribe', formData, {
+  const response = await API.post('/api/interview/transcribe', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
   return response.data.data;
