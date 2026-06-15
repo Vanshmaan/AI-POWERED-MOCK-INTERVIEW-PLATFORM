@@ -1,5 +1,17 @@
+/* ============================================
+   CodeEditor — Neon Border Wrapper
+   ============================================ */
+
 .code-editor-wrapper {
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
   overflow: hidden;
+  position: relative;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.code-editor-wrapper:focus-within {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--accent-cyan-dim), var(--shadow-md);
 }

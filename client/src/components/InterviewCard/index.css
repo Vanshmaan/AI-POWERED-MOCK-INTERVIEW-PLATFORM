@@ -1,95 +1,195 @@
+/* ============================================
+   InterviewCard — Dark Glass Card with Rich Animations
+   ============================================ */
+
 .interview-card {
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px;
   cursor: pointer;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Staggered card entrance */
+.interview-card:nth-child(1) { animation-delay: 0s; }
+.interview-card:nth-child(2) { animation-delay: 0.1s; }
+.interview-card:nth-child(3) { animation-delay: 0.2s; }
+.interview-card:nth-child(4) { animation-delay: 0.3s; }
+.interview-card:nth-child(5) { animation-delay: 0.4s; }
+.interview-card:nth-child(6) { animation-delay: 0.5s; }
+
+/* Animated gradient top border */
+.interview-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-violet), var(--accent-cyan));
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Background glow blob on hover */
+.interview-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.03), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.interview-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.08),
+    0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.interview-card:hover::before {
+  opacity: 1;
+}
+
+.interview-card:hover::after {
+  opacity: 1;
 }
 
 .interview-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .interview-card-role {
-  font-family: 'Bree Serif', serif;
-  font-size: 18px;
-  color: #0f172a;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
   margin: 0;
+  letter-spacing: -0.01em;
+  transition: color var(--transition-base);
+}
+
+.interview-card:hover .interview-card-role {
+  color: var(--accent-cyan);
 }
 
 .interview-badge {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
   font-weight: 600;
   padding: 4px 10px;
-  border-radius: 20px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all var(--transition-base);
 }
 
 .badge-success {
-  background-color: #dcfce7;
-  color: #16a34a;
+  background-color: var(--accent-emerald-dim);
+  color: var(--accent-emerald);
 }
 
 .badge-warning {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: var(--accent-amber-dim);
+  color: var(--accent-amber);
+  animation: breathe 2s ease-in-out infinite;
 }
 
 .interview-card-meta {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .interview-card-date,
 .interview-card-questions {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #64748b;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--transition-base);
+}
+
+.interview-card:hover .interview-card-date,
+.interview-card:hover .interview-card-questions {
+  color: var(--text-secondary);
 }
 
 .interview-card-score {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .score-value {
-  font-family: 'Bree Serif', serif;
-  font-size: 28px;
+  font-family: var(--font-heading);
+  font-size: 32px;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px currentColor;
+  transition: all var(--transition-base);
+}
+
+.interview-card:hover .score-value {
+  animation: glowPulse 2s ease-in-out infinite;
 }
 
 .score-label {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  color: #94a3b8;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
   margin-left: 2px;
 }
 
 .interview-card-footer {
   display: flex;
   justify-content: flex-end;
-  padding-top: 12px;
-  border-top: 1px solid #e2e8f0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .interview-card-delete {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background: none;
+  gap: 5px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #dc2626;
-  padding: 4px 8px;
-  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.interview-card-delete:hover {
+  color: var(--accent-rose);
+  background: var(--accent-rose-dim);
+  transform: scale(1.05);
 }
 
 .delete-icon {
-  font-size: 18px;
+  font-size: 15px;
+  transition: transform var(--transition-base);
+}
+
+.interview-card-delete:hover .delete-icon {
+  transform: rotate(-10deg) scale(1.1);
 }

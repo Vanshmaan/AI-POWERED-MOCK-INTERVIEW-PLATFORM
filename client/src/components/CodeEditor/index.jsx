@@ -7,14 +7,15 @@ function CodeEditor({ value, onChange, language, readOnly }) {
       <Editor
         height="300px"
         language={language || 'javascript'}
-        theme="light"
+        theme="vs-dark"
         value={value}
         onChange={onChange}
         options={{
           readOnly: readOnly || false,
           minimap: { enabled: false },
           fontSize: 14,
-          fontFamily: "monospace",
+          fontFamily: "'Fira Code', 'JetBrains Mono', monospace",
+          fontLigatures: true,
           wordWrap: 'on',
           scrollBeyondLastLine: false,
           automaticLayout: true,

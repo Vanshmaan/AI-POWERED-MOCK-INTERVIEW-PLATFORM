@@ -17,7 +17,28 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <App />
-        <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#1a1a2e',
+              color: '#e8ecf4',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '10px',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '14px',
+              backdropFilter: 'blur(20px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+            },
+            success: {
+              iconTheme: { primary: '#10b981', secondary: '#fff' },
+            },
+            error: {
+              iconTheme: { primary: '#f43f5e', secondary: '#fff' },
+            },
+          }}
+        />
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

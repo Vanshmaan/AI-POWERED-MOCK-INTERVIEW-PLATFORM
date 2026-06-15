@@ -1,27 +1,42 @@
+/* ============================================
+   VoiceRecorder — Pulsing Record Button
+   ============================================ */
+
 .voice-recorder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
 }
 
 .vr-record-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background-color: #2563eb;
+  gap: 10px;
+  background: var(--gradient-primary);
+  background-size: 200% 200%;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  border-radius: var(--radius-md);
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all var(--transition-base);
+  letter-spacing: 0.02em;
+}
+
+.vr-record-btn:hover {
+  animation: gradientShift 3s ease infinite;
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-2px);
 }
 
 .vr-record-btn-disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .vr-btn-icon {
@@ -32,8 +47,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
+  padding: 20px;
+  background: var(--accent-rose-dim);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: var(--radius-lg);
+  animation: fadeIn 0.3s ease-out;
 }
 
 .vr-recording-status {
@@ -43,59 +63,80 @@
 }
 
 .vr-record-dot {
-  color: #dc2626;
-  font-size: 20px;
+  color: var(--accent-rose);
+  font-size: 18px;
+  animation: typing 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.5));
 }
 
 .vr-status-text {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  color: #dc2626;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--accent-rose);
   font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .vr-timer {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-mono);
   font-size: 14px;
-  color: #334155;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
 }
 
 .vr-stop-btn {
-  background-color: #dc2626;
+  background: var(--accent-rose);
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 24px;
-  font-family: 'Roboto', sans-serif;
+  border-radius: var(--radius-md);
+  padding: 10px 28px;
+  font-family: var(--font-body);
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all var(--transition-base);
+  letter-spacing: 0.02em;
+}
+
+.vr-stop-btn:hover {
+  box-shadow: var(--shadow-glow-rose);
+  transform: translateY(-1px);
 }
 
 .vr-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
+  padding: 20px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  animation: fadeInUp 0.4s ease-out;
 }
 
 .vr-preview-label {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #334155;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .vr-audio-player {
   width: 100%;
   max-width: 400px;
+  border-radius: var(--radius-md);
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .vr-preview-duration {
-  font-family: 'Roboto', sans-serif;
-  font-size: 13px;
-  color: #64748b;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
   margin: 0;
+  letter-spacing: 0.08em;
 }
 
 .vr-preview-actions {
@@ -105,36 +146,52 @@
 }
 
 .vr-rerecord-btn {
-  background-color: #ffffff;
-  color: #2563eb;
-  border: 1px solid #2563eb;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-family: 'Roboto', sans-serif;
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 1.5px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 10px 22px;
+  font-family: var(--font-body);
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.vr-rerecord-btn:hover {
+  background: var(--accent-cyan-dim);
+  box-shadow: var(--shadow-glow-cyan);
 }
 
 .vr-rerecord-btn-disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .vr-submit-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #2563eb;
+  background: var(--gradient-primary);
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-family: 'Roboto', sans-serif;
+  border-radius: var(--radius-md);
+  padding: 10px 22px;
+  font-family: var(--font-body);
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.vr-submit-btn:hover {
+  box-shadow: var(--shadow-glow-cyan);
+  transform: translateY(-1px);
 }
 
 .vr-submit-btn-disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  pointer-events: none;
 }

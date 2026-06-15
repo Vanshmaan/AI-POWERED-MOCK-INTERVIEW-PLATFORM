@@ -1,6 +1,5 @@
 /* ============================================
-   ProtectedRoute - Loading State Styles
-   Palette: Ocean Blue
+   ProtectedRoute — Dark Loading State
    ============================================ */
 
 .protected-loading {
@@ -8,12 +7,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
-  gap: 12px;
+  min-height: 100vh;
+  gap: 16px;
+  background: var(--bg-primary);
 }
 
 .protected-loading-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  color: #64748b;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: typing 1.5s ease-in-out infinite;
 }
