@@ -3,9 +3,16 @@ import './index.css'
 import { deleteHistoryItem, getHistory } from "../../services/historyService";
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BsChatSquareTextFill, BsCheckCircleFill, BsPlayCircleFill, BsTrophyFill } from 'react-icons/bs';
+import { 
+  BsChatSquareTextFill,
+  BsCheckCircleFill,
+  BsPlayCircleFill,
+  BsTrophyFill,
+  BsChatSquareText
+} from "react-icons/bs";
 import InterviewCard from '../../components/InterviewCard';
 import { AuthContext } from '../../context/AuthContext';
+import toast from "react-hot-toast";
 
 
 function HomePage() {
@@ -20,8 +27,8 @@ useEffect(() => {
   const loadHistory = async () => {
     try {
       const allData = await getHistory(1, 100);
-      setAllInterviews(allData.entries);
-      setRecentInterviews(allData.entries.slice(0, 3));
+      setAllInterviews(allData?.entries);
+      setRecentInterviews(allData?.entries.slice(0, 3));
     } catch (error) {
       console.error('Failed to load history:', error.message);
     } finally {
